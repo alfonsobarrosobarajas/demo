@@ -3,9 +3,7 @@ package com.example.demo.restcontrollers;
 import com.example.demo.entities.UserEntity;
 import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +21,16 @@ public class UserRestController {
     @GetMapping()
     public List<UserEntity> find() {
         return userService.find();
+    }
+
+    @PostMapping()
+    public UserEntity save(@RequestBody UserEntity userEntity){
+        return userService.save(userEntity);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable("id")Integer id){
+        userService.deleteById(id);
     }
 
 }
