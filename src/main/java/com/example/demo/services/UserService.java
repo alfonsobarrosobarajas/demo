@@ -18,9 +18,20 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    // Método pa'traer sólo un mono :)
+    public UserEntity findById(Integer id){
+        return userRepository.findById(id).get();
+    }
+
     // Método pa'guardar datos en la base de datos
     public UserEntity save(UserEntity userEntity){
         return userRepository.save(userEntity);
+    }
+
+    public UserEntity update(Integer id, UserEntity userEntity){
+        UserEntity updatedUserEntity = userEntity;
+        updatedUserEntity.setId(id);
+        return userRepository.save(updatedUserEntity);
     }
 
     // Método pa'eliminar un registro de la tabla

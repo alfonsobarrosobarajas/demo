@@ -23,9 +23,19 @@ public class UserRestController {
         return userService.find();
     }
 
+    @GetMapping("/{id}")
+    public UserEntity findById(@PathVariable("id")Integer id){
+        return userService.findById(id);
+    }
+
     @PostMapping()
     public UserEntity save(@RequestBody UserEntity userEntity){
         return userService.save(userEntity);
+    }
+
+    @PutMapping("/{id}")
+    public UserEntity update(@PathVariable("id")Integer id, @RequestBody UserEntity userEntity){
+        return userService.update(id,userEntity);
     }
 
     @DeleteMapping("/{id}")
